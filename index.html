@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8" />
+
+        <title>Assignment #4</title>
+		
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="jquery.simple-text-rotator.js"></script>
+	    <link rel="stylesheet" type="text/css" href="simpletextrotator.css" />
+        <script type="text/javascript" src="validation.js"></script>
+		<script>
+			$(document).ready(function(){
+		    $(".rotate").textrotator({
+				animation: "flipUp",
+				separator: ",",
+				speed: 1600
+			 });
+
+			});
+		</script>
+	
+		<style>
+
+		html {
+			background-color: white;
+		}
+		body {
+		    width:600px;
+			margin: 5% auto;
+			background-color: #CCFFFF;
+			border: 2px black dashed;
+			padding: 30px;
+		}
+		
+		.right {
+		    text-align: right;
+		}
+		
+
+		
+		#button {
+			color: orange;
+			background: none;
+			border: none;
+			font-weight: bold;
+		}
+		
+		.errorSet {
+		    border: none;
+		}
+		
+		table.items {
+			width:100%;
+		}
+		
+		table.items tr{
+			background-color: #cedbdb;
+		}
+		
+		table.items td{
+			padding-left: 5px;
+			padding-top: 3px;
+		}
+		
+		.total {
+		    border: none;
+		}
+
+		
+		
+		</style>
+
+    </head>
+
+    <body>
+
+        <form action="check_out.php" method="post" onsubmit="return validateMyForm();">
+		
+			<fieldset>
+				
+			<legend>Personal Information</legend>
+			
+		    <table>
+
+				
+			    <tr>
+				    <td><label for="firstName">First Name:</label></td>
+					<td><input type="text" name="firstName" id="firstName" onblur="this.value=TrimFunction(this.value)"></td>
+				</tr>
+				
+				<tr>
+				    <td><label for="lastName">Last Name:</label></td>
+					<td><input type="text" name="lastName" id="lastName" onblur="this.value=TrimFunction(this.value)"></td>
+				
+				</tr>
+				
+				<tr>
+				    <td><label for="streetNumber">Streeet Number:</label></td>
+					<td><input type="text" name="streetNumber" id="streetNumber" onblur="this.value=TrimFunction(this.value)"></td>
+				</tr>
+				
+				<tr>
+				    <td><label for="streetName">Streeet Name:</label></td>
+					<td><input type="text" name="streetName" id="streetName" onblur="this.value=TrimFunction(this.value)"></td>
+				</tr>
+				
+				<tr>
+				    <td><label for="postalCode">Postal Code:</label></td>
+					<td><input type="text" name="postalCode" id="postalCode" placeholder="N2G2D4" onblur="this.value=TrimFunction(this.value)"></td>
+				</tr>
+				
+				<tr>
+				    <td><label for="cityName">City:</label></td>
+					<td><input type="text" name="cityName" id="cityName" onblur="this.value=TrimFunction(this.value)"></td>
+				</tr>
+				
+				<tr>
+				    <td><label for="province">Province:</label></td>
+					<td>
+					    <select size="1" name="province" id="province">
+						    <option value="ON">ON</option>
+							<option value="QC">QC</option>
+							<option value="NS">NS</option>
+							<option value="NB">NB</option>
+							<option value="MB">MB</option>
+							<option value="BC">BC</option>
+							<option value="PE">PE</option>
+							<option value="SK">SK</option>
+							<option value="AB">AB</option>
+							<option value="NL">NL</option>
+						</select>	
+				    </td>
+				</tr>
+				
+
+            </table>
+			
+            
+			
+			
+	    </fieldset><br><br>
+		
+		<fieldset class="itemList">
+		
+		<legend>Item list</legend><br>
+		
+		    <table class="items">
+			
+			    <tr>
+				    <td><img src="item1.jpg" width="70px" height="70px" alt="Kind of old version of flying saucer, used to cross only couple of thousends km per hours"> An old UFO saucer </td>
+					<td><span class="rotate">2.00$, Only!</span></td>
+					<td class="right"><input type="text" name="numberOfOldUFO" id="numberOfOldUFO" size="1" value="0"><input type="button" onclick="IncreaseFunctionOld();" id="button" value="+"></td>
+				</tr>
+				
+				<tr>
+				    <td><img src="item2.jpg" width="70px" height="70px" alt="">A new UFO saucer</td>
+					<td><span class="rotate">3.00$, Only!</span></td>
+					<td class="right"><input type="text" name="numberOfNewUFO" id="numberOfNewUFO" size="1" value="0" ><input type="button" onclick="IncreaseFunctionNew();" id="button" value="+"></td>
+				</tr>
+
+			</table>
+		
+		</fieldset><br>
+		
+		
+		<fieldset class="errorSet">
+		
+		    <span id="userErrorSpan"></span>
+		
+		</fieldset>
+		<br><br>
+		
+		<input type="submit" value="Approve" />
+
+        </form>
+
+    </body>
+
+</html>
+
+
+
